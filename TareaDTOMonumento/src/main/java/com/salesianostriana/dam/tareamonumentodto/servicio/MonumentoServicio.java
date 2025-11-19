@@ -1,0 +1,66 @@
+package com.salesianostriana.dam.tareamonumentodto.servicio;
+
+import com.salesianostriana.dam.tareamonumentodto.MonumentoRepository;
+import com.salesianostriana.dam.tareamonumentodto.controller.MonumentoNotFoundException;
+import com.salesianostriana.dam.tareamonumentodto.modelo.Monumento;
+import lombok.RequiredArgsConstructor;
+import org.springframework.stereotype.Service;
+import org.springframework.util.StringUtils;
+
+import java.util.List;
+import java.util.Optional;
+
+@Service
+@RequiredArgsConstructor
+public class MonumentoServicio {
+
+    private final MonumentoRepository monumentoRepository;
+
+    public List<Monumento> getAll() {
+        List<Monumento> result =  monumentoRepository.findAll();
+
+        if (result.isEmpty())
+            throw new MonumentoNotFoundException("No hay monumentos registrados");
+
+        return result;
+    }
+
+    public Monumento getById(Long id) {
+        return monumentoRepository.findById(id)
+                .orElseThrow(() -> new MonumentoNotFoundException(id));
+    }
+
+    public Monumento save(CrearMonumentoCmd cmd) {
+
+        if (!StringUtils.hasText(cmd.nombre())) {
+            throw new IllegalArgumentException("Error al crear un monumento");
+        }
+
+        return monumentoRepository.save(cmd.toEntity());
+    }
+
+    public Monumento edit(CrearMonumentoCmd cmd, Long id) {
+        return monumentoRepository.findById(id)
+                .map(monumento -> {
+                    monumento.setIsoCode(cmd.isoCode());
+                    monumento.setPais(cmd.pais());
+                    monumento.setNombre(cmd.nombre());
+                    monumento.setDescripcion(cmd.descripcion());
+                    monumento.setLocalizacion(cmd.localizacion());
+                    monumento.setUrl(cmd.descripcion());
+
+                    return monumentoRepository.save(monumento);
+                })
+                .orElseThrow(() -> new RuntimeException());
+    }
+
+    public void delete(Monumento monumento) {
+        deleteById(monumento.getId());
+    }
+
+    public void deleteById(Long id) {
+        monumentoRepository.deleteById(id);
+    }
+
+
+}
