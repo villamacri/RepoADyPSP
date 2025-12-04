@@ -1,14 +1,17 @@
-package com.salesianostriana.dam.ejerciciobibliotecas.controller;
+package com.salesianostriana.dam.ejerciciobibliotecas.error;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ProblemDetail;
 import org.springframework.web.bind.annotation.ExceptionHandler;
+import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 
 import java.net.URI;
 
 @RestControllerAdvice
 public class GlobalExceptionHandler {
+
+    @ResponseStatus(HttpStatus.NOT_FOUND)
     @ExceptionHandler(LibraryNotFoundException.class)
     public ProblemDetail handleBibliotecaNotFound(
             LibraryNotFoundException exception

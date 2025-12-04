@@ -1,9 +1,9 @@
 package com.salesianostriana.dam.ejerciciobibliotecas.controller;
 
 import com.salesianostriana.dam.ejerciciobibliotecas.modelo.Biblioteca;
-import com.salesianostriana.dam.ejerciciobibliotecas.servicio.BibliotecaResponse;
+import com.salesianostriana.dam.ejerciciobibliotecas.dto.BibliotecaResponse;
 import com.salesianostriana.dam.ejerciciobibliotecas.servicio.BibliotecaServicio;
-import com.salesianostriana.dam.ejerciciobibliotecas.servicio.CreaBibliotecaCmd;
+import com.salesianostriana.dam.ejerciciobibliotecas.dto.CreaBibliotecaCmd;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.ArraySchema;
 import io.swagger.v3.oas.annotations.media.Content;

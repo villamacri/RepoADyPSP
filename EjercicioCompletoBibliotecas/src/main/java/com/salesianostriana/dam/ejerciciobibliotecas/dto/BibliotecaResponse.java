@@ -1,4 +1,4 @@
-package com.salesianostriana.dam.ejerciciobibliotecas.servicio;
+package com.salesianostriana.dam.ejerciciobibliotecas.dto;
 
 import com.salesianostriana.dam.ejerciciobibliotecas.modelo.Biblioteca;
 

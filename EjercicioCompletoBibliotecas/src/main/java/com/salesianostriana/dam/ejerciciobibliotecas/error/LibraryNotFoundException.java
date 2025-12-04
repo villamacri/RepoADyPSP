@@ -1,4 +1,4 @@
-package com.salesianostriana.dam.ejerciciobibliotecas.controller;
+package com.salesianostriana.dam.ejerciciobibliotecas.error;
 
 public class LibraryNotFoundException extends RuntimeException{
 

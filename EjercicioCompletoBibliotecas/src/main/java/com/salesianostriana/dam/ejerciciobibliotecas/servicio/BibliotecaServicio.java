@@ -1,7 +1,8 @@
 package com.salesianostriana.dam.ejerciciobibliotecas.servicio;
 
 import com.salesianostriana.dam.ejerciciobibliotecas.BibliotecaRepository;
-import com.salesianostriana.dam.ejerciciobibliotecas.controller.LibraryNotFoundException;
+import com.salesianostriana.dam.ejerciciobibliotecas.dto.CreaBibliotecaCmd;
+import com.salesianostriana.dam.ejerciciobibliotecas.error.LibraryNotFoundException;
 import com.salesianostriana.dam.ejerciciobibliotecas.modelo.Biblioteca;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -16,7 +17,6 @@ public class BibliotecaServicio {
 
     public List<Biblioteca> getAll(){
         List<Biblioteca> result = repository.findAll();
-
         if (result.isEmpty())
             throw new LibraryNotFoundException("No hay bibliotecas registradas");
 
